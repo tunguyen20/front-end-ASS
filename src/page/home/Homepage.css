@@ -43,6 +43,7 @@ img {
     border-radius: 3px;
     outline: rgb(207, 207, 207);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    
 }
 .dssp h1{
     text-align: center;
@@ -62,7 +63,7 @@ img {
 }
 
 .btnAddCart{
-    background-color: rgb(151, 8, 8);
+    background-color: rgb(156, 156, 156);
     border: 0;
     padding: 9px 15px;
     color: white;
@@ -73,7 +74,7 @@ img {
 }
 
 .thongTinSP button:hover {
-    background-color: rgb(167, 76, 76);
+    background-color: rgb(34, 34, 34);
     transition: 1s;
     
 }

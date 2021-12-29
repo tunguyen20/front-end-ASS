@@ -11,62 +11,112 @@ export default function WareHouse() {
 
     const [data, setData] = useState<Product[]>([]);
     const [dataShowForm, setDataFrorm] = useState<Product>({ idProduct: 0, img: "", price: 0, name: "" });
-
+    const [numberPage, setNumberPage] = useState<number[]>([]);
+    const [indexPage, setIndexPage] = useState<number>(1);
+    const [input, setInput] = useState<string>("");
     useEffect(() => {
-        productController.list("",1,7).then(res => {
+        productController.list("", 1, 3).then(res => {
             setData(res.dataPage)
+            setNumberPage(res.arrPagenumber)
         });
     }, [])
 
 
     const remove = (id: number) => {
-        productController.delete(id).then(res => {
-            setData(res)
-        })
+        productController.delete(id)
 
     }
 
     const add = (product: Product) => {
         if (dataShowForm.idProduct != 0) {
-            productController.update(product).then(res => {
-                setData(res)
-            })
+            productController.update(product)
+            productController.list("", 1, 3).then(res => {
+                setData(res.dataPage)
+                setNumberPage(res.arrPagenumber)
+            });
         }
         else {
             product.idProduct = Date.now()
-            productController.add(product).then(res =>
-                setData(res)
-            )
+            productController.add(product)
+             productController.list("", 1, 3).then(res => {
+                setData(res.dataPage)
+                setNumberPage(res.arrPagenumber)
+            });
         }
         setDataFrorm({ idProduct: 0, img: "", price: 0, name: "" })
+        setInput("")
     }
 
-
-    const search = (input: string) => {
-
-        if (input == "") {
-            input = "null"
-        }
-        productController.list(input,1,4).then(res => {
-            setData(res.dataPage)
-        })
-    }
 
     const onEdit = (product: Product) => {
         setDataFrorm(product)
+    }
+    let onNumberPage = (id: number) => {
+        if (input == "") {
+            productController.list("", id, 3).then(res => {
+                setData(res.dataPage)
+                setIndexPage(id)
+                setNumberPage(res.arrPagenumber)
+            })
+        } else {
+            productController.list(input, id, 3).then(res => {
+                setData(res.dataPage)
+                setNumberPage(res.arrPagenumber)
+                setIndexPage(id)
+            })
+        }
+
+    }
+    let onBev = () => {
+        if (indexPage > 1) {
+            onNumberPage(indexPage - 1)
+            setIndexPage(indexPage - 1)
+        }
+    }
+    let onNext = () => {
+        if (indexPage < numberPage.length) {
+            onNumberPage(indexPage + 1)
+            setIndexPage(indexPage + 1)
+        }
+    }
+    let search = (input: string) => {
+        if (input != "") {
+            productController.list(input, 1, 3).then(res => {
+                setData(res.dataPage)
+                setNumberPage(res.arrPagenumber)
+                setInput(input)
+                setIndexPage(1)
+            })
+        } else {
+            productController.list("", 1, 3).then(res => {
+                setData(res.dataPage)
+                setNumberPage(res.arrPagenumber)
+                setIndexPage(1)
+                setInput("")
+            })
+        }
     }
     return (
 
 
         <div className="warehouse">
             <FormWareHouse key={uuidv4()} onAdd={add} dataForm={dataShowForm}></FormWareHouse>
+
             <div className="right">
 
                 <h2 className="rightItem">Danh sách sản phẩm trong kho</h2>
                 <div>
-                    <input type="text" style={{ marginLeft: "35%", marginTop: "10px", width: "30%", height: "30px" }} onChange={e => search(e.target.value)} placeholder='Search.....' />
+                    <input value={input}type="text" style={{ marginLeft: "35%", marginTop: "10px", width: "30%", height: "30px" }} onChange={e => search(e.target.value)} placeholder='Search.....' />
                 </div>
                 <WareHouseProducts onEdit={onEdit} onDelete={remove} product={data} ></WareHouseProducts>
+                <div style={{ textAlign: "center", padding: "20px" }} className="paginatinonProduct">
+                    <button className={indexPage == 1 ? "activeBev" : ""} style={{ padding: "10px 20px", marginLeft: "10px", border: "0", borderRadius: "100px" }} onClick={onBev}>bev</button>
+
+                    {numberPage.map((item, index) => (
+                        <button className={indexPage == index + 1 ? "indexPage" : ''} key={index} style={{ padding: "10px 20px", marginLeft: "10px", borderRadius: "100px", border: "0" }} onClick={() => { onNumberPage(index + 1) }}>{index + 1}</button>
+                    ))}
+                    <button className={indexPage == numberPage.length ? "activeNext" : ""} style={{ padding: "10px 20px", marginLeft: "10px", borderRadius: "100px", border: 0 }} onClick={onNext}>next</button>
+                </div>
             </div>
 
         </div>
