@@ -2,6 +2,7 @@
     margin-top: 170px;
     display: inline-block;
     width: 100%;
+    background-color: white;
     min-height: 500px;
 }
 .leftDetail{
@@ -21,4 +22,5 @@
 }
 .btnAddCart{
   margin-top: 20px;
+  display: block;
 }

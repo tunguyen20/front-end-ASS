@@ -14,7 +14,7 @@ export default function OrderPage() {
     return (
         <div>
             <div className="order">
-                <div>{data.length == 0 ? <div><h1>Danh sách trống</h1><img className='imgEmpty' src="https://beemall.io/search.png" alt="" /> <a href="/home">Home</a> </div> : ""}</div>
+                <div className='empty'>{data.length == 0 ? <div><h1>Danh sách trống</h1><img className='imgEmpty' src="https://beemall.io/search.png" alt="" /> <a href="/home">Home</a> </div> : ""}</div>
                 {data.map((item, index) => (
 
                     <div className="orderProduct">
@@ -31,13 +31,11 @@ export default function OrderPage() {
                                 <p>{item.products.name}</p>
                             </div>
                             <div className="quantity">X{item.products.quantity}</div>
+
                             <div className="priceOrderProduct"> {String(item.products.price).replace(/\B(?=(\d{3})+(?!\d))/g, ",")} đ</div>
-
-                            <div className="total">Total:{String(Number(item.products.price) * Number(item.products.quantity)).replace(/\B(?=(\d{3})+(?!\d))/g, ",")} đ</div>
-
-
-
                         </div>
+
+                        <div className="total">Total:{String(Number(item.products.price) * Number(item.products.quantity)).replace(/\B(?=(\d{3})+(?!\d))/g, ",")} đ</div>
                     </div>
                 ))}
 

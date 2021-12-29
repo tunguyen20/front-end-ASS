@@ -7,13 +7,22 @@ body{
 
     padding: 0 30px;
 }
+.order .imgEmpty{
+ 
+    width: 300px;
+}
+.order .empty{
+    text-align: center;
+}
 .imgOrderProduct {
     width: 200px;
 }
+
 .orderProducts{
     display: grid;
     border-top: 1px rgb(139, 139, 139) dotted;
-    grid-template-columns: 0.1fr 1.5fr 0.1fr 1.7fr 1fr ;
+    grid-template-columns: 0.1fr 1.5fr 0.1fr 1.7fr ;
+    border-top: 1px rgb(139, 139, 139) dotted;
 }
 .orderProduct{
    
@@ -26,8 +35,11 @@ body{
 .infoUser{
     margin-bottom: 10px;
 }
-.nameOrderProduct ,.quantity ,.priceOrderProduct ,.ship,.total{
+.nameOrderProduct {
     text-align: left;
+}
+.nameOrderProduct ,.quantity ,.priceOrderProduct ,.ship,.total{
+   
     margin-left: 30px;
  margin-top: 40px;
  font-weight: 800;

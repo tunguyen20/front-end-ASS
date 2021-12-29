@@ -13,7 +13,7 @@ export default function WareHouse() {
     const [dataShowForm, setDataFrorm] = useState<Product>({ idProduct: 0, img: "", price: 0, name: "" });
 
     useEffect(() => {
-        productController.list("",1,3).then(res => {
+        productController.list("",1,7).then(res => {
             setData(res.dataPage)
         });
     }, [])
