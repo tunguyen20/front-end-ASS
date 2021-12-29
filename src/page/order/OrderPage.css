@@ -1,0 +1,35 @@
+body{
+    font-weight: 400;
+}
+.order{
+    margin-top: 200px;
+    min-height: 500px;
+
+    padding: 0 30px;
+}
+.imgOrderProduct {
+    width: 200px;
+}
+.orderProducts{
+    display: grid;
+    border-top: 1px rgb(139, 139, 139) dotted;
+    grid-template-columns: 0.1fr 1.5fr 0.1fr 1.7fr 1fr ;
+}
+.orderProduct{
+   
+    text-align: right;
+    background-color: white;
+    padding: 10px 30px;
+ margin-bottom: 30px;
+ border-radius: 4px;
+}
+.infoUser{
+    margin-bottom: 10px;
+}
+.nameOrderProduct ,.quantity ,.priceOrderProduct ,.ship,.total{
+    text-align: left;
+    margin-left: 30px;
+ margin-top: 40px;
+ font-weight: 800;
+ 
+}

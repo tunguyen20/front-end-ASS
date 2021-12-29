@@ -1,0 +1,10 @@
+footer{
+    background-color: #000000;
+    color: rgb(180, 180, 180);
+    text-align: center;
+   padding: 2px 0;
+   height: 30px;
+   padding: 5px;
+    margin-top: 20px;
+    display: block;
+}

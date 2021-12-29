@@ -1,0 +1,133 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color:  rgb(245,245,245);
+    font-family: 'Times New Roman', Times, serif;
+}
+img{
+    width: 100%;
+}
+.warehouse{
+    display: inline-block;
+    width: 98%;
+    min-height: 700px;
+}
+.warehouse .left{
+    width: 30%;
+   position: fixed;
+    margin-top: 200px;
+    float: left;
+  
+   border-right: 1px black solid;
+}
+
+.warehouse .left label,input{
+  
+display: block;
+}
+.warehouse .left label{
+    margin-top: 10px;
+    text-align: left;
+}
+.warehouse .left input{
+    height: 40px;
+    width: 90%;
+    margin-top: 5px;
+  padding: 0 10px;
+  border: rgb(180, 180, 180) 1px solid;
+  border-radius: 4px;
+}
+.warehouse .left .form{
+   padding-left: 70px;
+ 
+}
+.warehouse .left .form {
+  text-align: center;
+}
+.btnAddProduct{
+    margin-top: 30px;
+    padding: 10px 20px;
+    font-size: 14px;
+    background: linear-gradient(145deg, rgb(121, 121, 121) 0%, rgb(87, 83, 73) 100%);
+        border: 0;
+        color: white;
+        border-radius: 2px;
+}
+
+.right{
+    float: right;
+    width: 70%;
+    margin-top: 200px;
+}
+.right .rightItem{
+    text-align: center;
+}
+.right .showProductCart {
+   
+    width: 100%;
+}
+.right .showProductCart .product{
+    width: 30%;
+    margin-left: 2.4%;  
+    margin-top: 30px;
+    display: inline-block;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+   padding: 10px 5px;
+    vertical-align: top;
+
+
+}
+.right .showProductCart .product:hover{
+    border: 1px rgb(199, 167, 23) solid;
+}
+.imageProduct{
+    height: 60%;
+   margin-bottom: 10%;
+}
+.right .showProductCart .product .imageProduct img{
+    border-radius: 10px 10px 0px 0;
+   
+}
+.right .showProductCart .product .editDel{
+    margin-top: 20px;
+    bottom: 0;
+    vertical-align: bottom;
+    
+}
+.right .showProductCart .product .editDel button{
+    padding: 10px 40px;
+    margin-left: 10px;
+    /* background: linear-gradient(
+145deg, rgb(1 82 86) 0%, rgb(155, 117, 12) 100%); */
+    border: 0;
+    color: white;
+    border-radius: 5px;
+    border: 1px #0000008f solid;
+    color: black;
+    background: none;
+    margin-top: 4px;
+    font-weight: 900;
+}
+.right .showProductCart .product .editDel button:hover{
+    background-color: rgb(112, 119, 143);
+    color: white;
+}
+.right .showProductCart .product .nameProduct{
+font-size: 20px;
+font-weight: 500;
+word-wrap: break-word;
+width: 80%;
+margin: auto;
+}
+.right .showProductCart .product .pireProduct{
+    color:  rgb(202,157,127);
+    font-weight: 800;
+    margin-top: 10px;
+    font-size: 22px;
+    padding-left: 5px;
+}
