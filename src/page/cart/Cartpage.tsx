@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import { getDataLocalCart, setDataLocalCart } from '../../controller/CartController';
 import { orderController } from '../../controller/OrderController';
 import { productController } from '../../controller/ProductController';
@@ -96,7 +97,7 @@ export default function Cartpage() {
                         <input type="text" placeholder='Email' onChange={e => { setInfo({ ...info, email: e.target.value }) }} />
                         <input type="text" placeholder='Address' onChange={e => { setInfo({ ...info, address: e.target.value }) }} />
                         <input type="text" placeholder='Postcode' onChange={e => { setInfo({ ...info, postcode: e.target.value }) }} />
-                        <a href="/cart"><button onClick={onCheckout} >Checkout</button></a>
+                        <Link to="/order"><button onClick={onCheckout} >Checkout</button></Link>
                         <a href="#" className="modal__close">&times;</a>
                     </div>
                 </div>

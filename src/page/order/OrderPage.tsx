@@ -18,7 +18,7 @@ export default function OrderPage() {
                 {data.map((item, index) => (
                     <div className="orderProduct">
                         <div className="infoUser">
-                            <p>{new Date(item.time).toString()}</p>
+                            <p>{(item.time).toString()}</p>
                             <p>{item.lastName} {item.firstName} , Email: {item.email}, Address: {item.address}, Mobile: {item.mobile}, PostCode: {item.postcode}</p>
                         </div>
                         <div className="orderProducts">

@@ -30,21 +30,24 @@ export default function WareHouse() {
     const add = (product: Product) => {
         if (dataShowForm.idProduct != 0) {
             productController.update(product)
-            productController.list("", 1, 3).then(res => {
+            productController.list("", indexPage, 3).then(res => {
                 setData(res.dataPage)
                 setNumberPage(res.arrPagenumber)
+                setIndexPage(indexPage)
+                search(input)
             });
         }
         else {
             product.idProduct = Date.now()
             productController.add(product)
-             productController.list("", 1, 3).then(res => {
+             productController.list("", data.length, 3).then(res => {
                 setData(res.dataPage)
                 setNumberPage(res.arrPagenumber)
+                setIndexPage(indexPage)
             });
         }
         setDataFrorm({ idProduct: 0, img: "", price: 0, name: "" })
-        setInput("")
+       
     }
 
 

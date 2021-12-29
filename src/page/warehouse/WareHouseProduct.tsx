@@ -4,7 +4,6 @@ import { Product } from '../../model/Product'
 interface Props {
     onDelete: () => void
     onEdit: () => void
-    
     product: Product
 };
 
