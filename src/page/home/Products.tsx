@@ -74,7 +74,7 @@ export default function Products() {
 
     return (
         <div className="allProduct">
-            <input className='searchInput' type="text" style={{ marginLeft: "35%", marginTop: "10px", width: "30%", height: "30px" }} onChange={e => search(e.target.value)} placeholder='Search.....' />
+            <input className='searchInput' type="text" onChange={e => search(e.target.value)} placeholder='Search.....' />
             {data.map((item, index) => (<ProductHome key={index} product={item}  ></ProductHome>))}
 
 

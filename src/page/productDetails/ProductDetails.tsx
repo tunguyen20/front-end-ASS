@@ -44,16 +44,16 @@ export default function ProductDetails() {
 
         localStorage.setItem("Carts", JSON.stringify(CartProducts))
     }
-    
+
     const onPlus = () => {
-        setQuatity(quantity+1)
-    
+        setQuatity(quantity + 1)
+
     }
     const onMinus = () => {
-        if(quantity>1){
-             setQuatity(quantity-1)
+        if (quantity > 1) {
+            setQuatity(quantity - 1)
         }
-       
+
     }
     return (
         <div>
@@ -66,12 +66,14 @@ export default function ProductDetails() {
                 </div>
                 <div className="rightDetail">
                     <h2><b>{data?.name}</b></h2>
-                    <h1>{data?.price} <u>đ</u> </h1>
+                    <h1>{String(data?.price).replace(/\B(?=(\d{3})+(?!\d))/g, ",")} <u>đ</u> </h1>
+                    <div className="quantityControl">
+                        <button className='btnMinus' onClick={onMinus} >-</button>
+                        <button >{quantity}</button>
+                        <button className='btnPlus' onClick={onPlus} >+</button>
+                        {/* <input type="number" min="1" onChange={e => { setQuatity(Number(e.target.value)) }} /> */}
 
-                    <button onClick={onMinus} style={{ padding: "5px 10px" }} >-</button>
-                    <button style={{ display: "inline-block", width: "50px", height: "30px" }}>{quantity}</button>
-                    <button onClick={onPlus}style={{ padding: "5px 10px" }} >+</button>
-                    {/* <input type="number" min="1" onChange={e => { setQuatity(Number(e.target.value)) }} /> */}
+                    </div>
                     <button className='btnAddCart' onClick={onAddCart}><b>THÊM VÀO GIỎ</b> </button>
                 </div>
             </section>

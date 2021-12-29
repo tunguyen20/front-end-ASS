@@ -16,10 +16,8 @@ export default function OrderPage() {
             <div className="order">
                 <div className='empty'>{data.length == 0 ? <div><h1>Danh sách trống</h1><img className='imgEmpty' src="https://beemall.io/search.png" alt="" /> <a href="/home">Home</a> </div> : ""}</div>
                 {data.map((item, index) => (
-
                     <div className="orderProduct">
                         <div className="infoUser">
-
                             <p>{new Date(item.time).toString()}</p>
                             <p>{item.lastName} {item.firstName} , Email: {item.email}, Address: {item.address}, Mobile: {item.mobile}, PostCode: {item.postcode}</p>
                         </div>

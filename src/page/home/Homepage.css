@@ -28,7 +28,16 @@ img {
     border-radius: 10px;
 }
 .searchInput{
-    padding: 5px 10px;
+    margin-left: 35%;
+     margin-top : 10px,;
+     width: 30%;
+     border: 1px solid rgb(214, 214, 214);
+      height: 30px;
+      padding: 0 20px;
+}
+.searchInput:focus{
+    outline: none;
+    border: none;
 }
 .searchInput:focus{
     border-radius: 3px;
