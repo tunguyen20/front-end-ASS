@@ -1,6 +1,6 @@
 import { count } from 'console';
 import React, { useState } from 'react'
-import { Phone, Product } from '../../model/Product';
+import {  Product } from '../../model/Product';
 
 interface Props {
     onAdd: (product: Product) => void,

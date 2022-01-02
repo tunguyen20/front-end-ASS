@@ -1,12 +1,12 @@
 import axios from "axios"
-import { OrderProduct } from "../model/Order"
+
 
 class OrderController {
-    async Order(orderProduct: OrderProduct) {
-        return axios.post("http://localhost:3001/order", { orderProduct })
-    }
-    async Orders() {
-        return axios.get("http://localhost:3001/orders", {}).then(res => {
+    // async Order(orderProduct: OrderProduct) {
+    //     return axios.post("http://localhost:3001/order", { orderProduct })
+    // }
+    async HistoryOrders(idUser:string) {
+        return axios.get(`http://localhost:3001/historyorders/${idUser}`, {}).then(res => {
             return res.data
         })
     }

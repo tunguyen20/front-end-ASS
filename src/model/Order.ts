@@ -1,5 +1,5 @@
 import { Cart } from "./Cart";
-import { ImgProduct } from "./Image";
+
 
 
 // export interface Order {
@@ -8,13 +8,16 @@ import { ImgProduct } from "./Image";
 //     //    products:OderProduct[]
 
 // }
-export interface OrderProduct {
-    products: Cart
+export interface HistoryOrder {
+    name:string
+    img:string
+    price:number
+    quantity:number
     firstName: string
     lastName: string
     address: string
-    mobile:string
-    email:string
-    postcode:string
-    time: number
+    phone: string
+    email: string
+    postcode: string
+    orderDate: number
 }

@@ -3,9 +3,9 @@ import { Cart } from "../../model/Cart";
 
 interface Props {
     product: Cart
-    onPlus: (quantily: number, id: number) => void
-    onMinus: (quantily: number, id: number) => void
-    onDelete: (id: number) => void
+    onPlus: (id: string) => void
+    onMinus: ( id: string,quantity:number) => void
+    onDelete: (id: string) => void
 };
 
 
@@ -25,13 +25,13 @@ export default function CartPageProduct(props: Props) {
             </div>
             <div className="quantily item">
                 <p>Số lượng </p>
-                <button onClick={() => props.onMinus(props.product.quantity, props.product.idProduct)} style={{ padding: "5px" }} >-</button>
+                <button onClick={() => props.onMinus(String(props.product.idOrderProduct),props.product.quantity)} style={{ padding: "5px" }} >-</button>
                 <button style={{ display: "inline-block", width: "50px", height: "30px" }}>{props.product.quantity}</button>
-                <button onClick={() => props.onPlus(props.product.quantity, props.product.idProduct)} style={{ padding: "5px" }} >+</button>
+                <button onClick={() => props.onPlus(String(props.product.idOrderProduct))} style={{ padding: "5px" }} >+</button>
             </div>
             <div className="delete item">
                 <p> Thao Tác</p>
-                <button onClick={() => props.onDelete(props.product.idProduct)}><i className="fas fa-trash-alt"></i></button>
+                <button onClick={() => props.onDelete(props.product.idOrderProduct)}><i className="fas fa-trash-alt"></i></button>
             </div>
         </div>
 

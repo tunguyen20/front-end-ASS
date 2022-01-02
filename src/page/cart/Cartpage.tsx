@@ -1,74 +1,69 @@
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
-import { getDataLocalCart, setDataLocalCart } from '../../controller/CartController';
+import { cartController } from '../../controller/CartController';
 import { orderController } from '../../controller/OrderController';
 import { productController } from '../../controller/ProductController';
+import { user } from '../../model/User';
 
 import { Cart } from '../../model/Cart';
-import { OrderProduct } from '../../model/Order';
 
 
 import "./CartPage.css"
 import CartPageProduct from './CartPageProduct';
+import { userInfo } from 'os';
 export default function Cartpage() {
-
-    let productOrder: OrderProduct = {
-        products: { idProduct: 0, name: "", price: 0, img: "", quantity: 0 }, firstName: "", lastName: "", address: "", email: "", mobile: "", postcode: "", time: 0,
-
+    let inforUser: user = {
+        idUser: "1", firstName: "", lastName: "", address: "", email: "", phone: "", postcode: ""
     }
-
-    const [cartProducts, setCartProducts] = useState<Cart[]>(getDataLocalCart);
-    const [info, setInfo] = useState<OrderProduct>(productOrder);
+    const [cartProducts, setCartProducts] = useState<Cart[]>([]);
+    const [infor, setInfo] = useState<user>(inforUser);
+    const iduser = "1"
     let total = 0;
     for (let i = 0; i < cartProducts.length; i++) {
         total += cartProducts[i].price * cartProducts[i].quantity
     }
+    useEffect(() => {
+        cartController.getCart(iduser).then(res => {
+            setCartProducts(res)
 
-    const onPlus = (quantity: number, id: number) => {
-        for (let i = 0; i < cartProducts.length; i++) {
-            if (cartProducts[i].idProduct == id) {
-                cartProducts[i].quantity = quantity + 1
-                setCartProducts(cartProducts.slice())
-                setDataLocalCart(cartProducts)
+        });
+    }, [])
 
-            }
-        }
+    const onPlus = (idOrderProduct: string) => {
+        cartController.savePlusQuantityCart(idOrderProduct)
+        cartController.getCart(iduser).then(res => {
+
+            setCartProducts(res)
+
+        });
+
     }
-    const onMinus = (quantity: number, id: number) => {
+    const onMinus = (idOrderProduct: string, quantity: number) => {
         if (quantity > 1) {
-            for (let i = 0; i < cartProducts.length; i++) {
-                if (cartProducts[i].idProduct == id) {
-                    cartProducts[i].quantity = quantity - 1
-                    setCartProducts(cartProducts.slice())
-                    setDataLocalCart(cartProducts)
-                }
-            }
+            cartController.saveMinusQuantityCart(idOrderProduct)
+            cartController.getCart(iduser).then(res => {
+                setCartProducts(res)
+
+            });
         }
 
     }
-    const onDelete = (id: number) => {
-        let cartProduct = cartProducts.filter(products => products.idProduct != id)
-        setCartProducts(cartProduct)
-        setDataLocalCart(cartProduct)
+    const onDelete = (idOrderProduct: string) => {
+        cartController.deleteProductCart(idOrderProduct)
+        cartController.getCart(iduser).then(res => {
+            setCartProducts(res)
+
+        });
     }
     const onCheckout = () => {
-        let productOrder: OrderProduct;
-        for (let i = 0; i < cartProducts.length; i++) {
-            productOrder = {
-                products: cartProducts[i],
-                firstName: info.firstName,
-                lastName: info.lastName,
-                address: info.address,
-                email: info.email,
-                mobile: info.mobile,
-                postcode: info.postcode,
-                time: Date.now()
-            }
-            orderController.Order(productOrder)
-        }
-        setCartProducts([])
-        setDataLocalCart([])
+        cartController.saveCheckout(infor, cartProducts[0].idOrder)
+
+    }
+    const onOrder = () => {
+        cartController.getInforUser(iduser).then(res => {
+            setInfo(res[0])
+        })
 
     }
     return (
@@ -81,23 +76,25 @@ export default function Cartpage() {
                         <CartPageProduct key={index} product={item} onPlus={onPlus} onMinus={onMinus} onDelete={onDelete} />
                     )
                     )}
-                </div>
-                <div className="totalCart">
-                    <h1>Tổng Tiền</h1>
-                    <h2>{total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}  đ</h2>
-                    <a href="#checkout">Order</a>
-                </div>
+                </div> {cartProducts.length != 0 ?
+                    <div className="totalCart">
+                        <h1>Tổng Tiền</h1>
+                        <h2>{total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}  đ</h2>
+                        <a onClick={onOrder} href="#checkout">Order</a>
+                    </div> : ""}
+
 
                 <div id="checkout" className="modal">
                     <div className="modal__content">
                         <h1>Delivery</h1>
-                        <input type="text" placeholder='Fisrt name' onChange={e => { setInfo({ ...info, firstName: e.target.value }) }} />
-                        <input type="text" placeholder='Last name' onChange={e => { setInfo({ ...info, lastName: e.target.value }) }} />
-                        <input type="text" placeholder='Mobile' onChange={e => { setInfo({ ...info, mobile: e.target.value }) }} />
-                        <input type="text" placeholder='Email' onChange={e => { setInfo({ ...info, email: e.target.value }) }} />
-                        <input type="text" placeholder='Address' onChange={e => { setInfo({ ...info, address: e.target.value }) }} />
-                        <input type="text" placeholder='Postcode' onChange={e => { setInfo({ ...info, postcode: e.target.value }) }} />
+                        <input type="text" value={infor.firstName} placeholder='Fisrt name' onChange={e => { setInfo({ ...infor, firstName: e.target.value }) }} />
+                        <input type="text" value={infor.lastName} placeholder='Last name' onChange={e => { setInfo({ ...infor, lastName: e.target.value }) }} />
+                        <input type="text" value={infor.phone} placeholder='Mobile' onChange={e => { setInfo({ ...infor, phone: e.target.value }) }} />
+                        <input type="text" value={infor.email} placeholder='Email' onChange={e => { setInfo({ ...infor, email: e.target.value }) }} />
+                        <input type="text" value={infor.address} placeholder='Address' onChange={e => { setInfo({ ...infor, address: e.target.value }) }} />
+                        <input type="text" value={infor.postcode} placeholder='Postcode' onChange={e => { setInfo({ ...infor, postcode: e.target.value }) }} />
                         <Link to="/order"><button onClick={onCheckout} >Checkout</button></Link>
+
                         <a href="#" className="modal__close">&times;</a>
                     </div>
                 </div>

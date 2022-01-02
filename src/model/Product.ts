@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ImgProduct } from "./Image";
+
 
 export interface Product {
     idProduct: number

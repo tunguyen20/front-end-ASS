@@ -15,7 +15,7 @@ import Footer from './component/Footer/Footer';
 import ProductDetails from './page/productDetails/ProductDetails';
 import Cartpage from './page/cart/Cartpage';
 import "./App.css"
-import OrderPage from './page/order/OrderPage';
+import HistoryOrderPage from './page/order/HistoryOrderPage';
 function App() {
   return (
     <BrowserRouter>
@@ -26,7 +26,7 @@ function App() {
         <Route path="/warehouse" element={<WareHousePage />} />
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/cart" element={<Cartpage />} />
-        <Route path="/order" element={<OrderPage />} />
+        <Route path="/order" element={<HistoryOrderPage />} />
       </Routes>
       <Footer></Footer>
     </BrowserRouter>

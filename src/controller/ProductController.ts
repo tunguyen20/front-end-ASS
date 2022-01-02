@@ -1,5 +1,5 @@
 import axios from "axios";
-import { OrderProduct } from "../model/Order";
+
 import { Product } from "../model/Product";
 
 
@@ -22,12 +22,9 @@ class ProductController {
             return res.data.data
         })
     }
-    delete(id: Number): Promise<Product[]> {
-        return axios.delete(`http://localhost:3001/products/delete/${id}`).then(res => {
-            return res.data.productsAfterDelete
-        })
-    }
-    detail(id: number): Promise<Product> {
+    delete(id: string) {
+        return axios.delete(`http://localhost:3001/products/delete/${id}`)}
+    detail(id: string): Promise<Product> {
         return axios.get(`http://localhost:3001/products/${id}`).then(res => {
             return res.data.productDetail
         })
@@ -42,14 +39,10 @@ class ProductController {
     //         return (res.data)
     //     })
     // }
-    async Order(orderProduct:OrderProduct){
-        return axios.post("http://localhost:3001/order", {orderProduct})
-    }
-    async Orders(){
-        return axios.get("http://localhost:3001/orders", {}).then(res => {
-            return res.data
-        })
-    }
+    // async Order(orderProduct:OrderProduct){
+    //     return axios.post("http://localhost:3001/order", {orderProduct})
+    // }
+   
 
 }
 
