@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { cartController } from '../../controller/CartController';
 import { orderController } from '../../controller/OrderController';
 import { productController } from '../../controller/ProductController';
-import { user } from '../../model/User';
+import { User } from '../../model/User';
 
 import { Cart } from '../../model/Cart';
 
@@ -13,11 +13,12 @@ import "./CartPage.css"
 import CartPageProduct from './CartPageProduct';
 import { userInfo } from 'os';
 export default function Cartpage() {
-    let inforUser: user = {
+    let inforUser: User = {
         idUser: "1", firstName: "", lastName: "", address: "", email: "", phone: "", postcode: ""
     }
     const [cartProducts, setCartProducts] = useState<Cart[]>([]);
-    const [infor, setInfo] = useState<user>(inforUser);
+    const [infor, setInfo] = useState<User>(inforUser);
+    
     const iduser = "1"
     let total = 0;
     for (let i = 0; i < cartProducts.length; i++) {
@@ -62,6 +63,8 @@ export default function Cartpage() {
     }
     const onOrder = () => {
         cartController.getInforUser(iduser).then(res => {
+            console.log(res);
+            
             setInfo(res[0])
         })
 

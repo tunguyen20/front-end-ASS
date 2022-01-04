@@ -14,13 +14,10 @@ export default function Products() {
     const [indexPage, setIndexPage] = useState<number>(1);
     const [input, setInput] = useState<string>("");
     useEffect(() => {
-        // productController.pagination(1).then(res => {
-        //     setdata(res.dataPage)
-        //     setNumberPage(res.arrPagenumber)
-        // })
+    
         productController.list("", 1, 4).then(res => {
             setdata(res.dataPage)
-            setNumberPage(res.arrPagenumber)
+            setNumberPage(res.arrPageNumber)
         })
 
     }, [])
@@ -29,12 +26,12 @@ export default function Products() {
             productController.list("", id, 4).then(res => {
                 setdata(res.dataPage)
                 setIndexPage(id)
-                setNumberPage(res.arrPagenumber)
+                setNumberPage(res.arrPageNumber)
             })
         } else {
             productController.list(input, id, 3).then(res => {
                 setdata(res.dataPage)
-                setNumberPage(res.arrPagenumber)
+                setNumberPage(res.arrPageNumber)
                 setIndexPage(id)
             })
         }
@@ -56,14 +53,14 @@ export default function Products() {
         if (input != "") {
             productController.list(input, 1, 3).then(res => {
                 setdata(res.dataPage)
-                setNumberPage(res.arrPagenumber)
+                setNumberPage(res.arrPageNumber)
                 setInput(input)
                 setIndexPage(1)
             })
         } else {
             productController.list("", 1, 4).then(res => {
                 setdata(res.dataPage)
-                setNumberPage(res.arrPagenumber)
+                setNumberPage(res.arrPageNumber)
                 setIndexPage(1)
                 setInput("")
             })
@@ -79,14 +76,14 @@ export default function Products() {
 
 
             <div style={{ textAlign: "center", padding: "20px" }} className="paginatinonProduct">
-                <button className={indexPage == 1 ? "activeBev" : ""} style={{ padding: "10px 20px", marginLeft: "10px", border: "0", borderRadius: "100px" }} onClick={onBev}>bev</button>
+                <button className={indexPage == 1 ? "activeBev" : ""} style={{ padding: "10px 20px", marginLeft: "10px", border: "0", borderRadius: "100px" }} onClick={onBev}>Pev</button>
 
                 {numberPage.map((item, index) => (
                     <button className={indexPage == index + 1 ? "indexPage" : ''} key={index} style={{ padding: "10px 20px", marginLeft: "10px", borderRadius: "100px", border: "0" }} onClick={() => { onNumberPage(index + 1) }}>{index + 1}</button>
                 ))}
 
 
-                <button className={indexPage == numberPage.length ? "activeNext" : ""} style={{ padding: "10px 20px", marginLeft: "10px", borderRadius: "100px", border: 0 }} onClick={onNext}>next</button>
+                <button className={indexPage == numberPage.length ? "activeNext" : ""} style={{ padding: "10px 20px", marginLeft: "10px", borderRadius: "100px", border: 0 }} onClick={onNext}>Next</button>
             </div>
 
         </div>

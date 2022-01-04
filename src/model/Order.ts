@@ -1,4 +1,6 @@
 import { Cart } from "./Cart";
+import { Product } from "./Product";
+import { User } from "./User";
 
 
 
@@ -8,16 +10,21 @@ import { Cart } from "./Cart";
 //     //    products:OderProduct[]
 
 // }
-export interface HistoryOrder {
-    name:string
-    img:string
-    price:number
-    quantity:number
-    firstName: string
-    lastName: string
-    address: string
-    phone: string
-    email: string
-    postcode: string
-    orderDate: number
+export interface Order {
+    idOrder: string
+    idUser: string
+    orderStatus: boolean
+    orderDate: string
+}
+export interface OrderProduct {
+    id: string
+    idOrder: string
+    idProduct: string
+    quantity: number
+    price: number
+    product: Product
+}
+export interface OrderWithDetail extends Order {
+    orderProducts: OrderProduct[]
+    user: User
 }

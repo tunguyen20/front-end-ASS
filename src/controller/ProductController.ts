@@ -26,9 +26,10 @@ class ProductController {
         return axios.delete(`http://localhost:3001/products/delete/${id}`)}
     detail(id: string): Promise<Product> {
         return axios.get(`http://localhost:3001/products/${id}`).then(res => {
-            return res.data.productDetail
+            return res.data
         })
     }
+    
     // search(name: string): Promise<Product[]> {
     //     return axios.get(`http://localhost:3001/products/search/name/${name}`).then(res => {
     //         return res.data.dataSearch

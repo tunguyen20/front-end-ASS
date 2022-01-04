@@ -17,7 +17,7 @@ export default function WareHouse() {
     useEffect(() => {
         productController.list("", 1, 3).then(res => {
             setData(res.dataPage)
-            setNumberPage(res.arrPagenumber)
+            setNumberPage(res.arrPageNumber)
         });
     }, [])
 
@@ -26,7 +26,7 @@ export default function WareHouse() {
         productController.delete(id)
         productController.list("", 1, 3).then(res => {
             setData(res.dataPage)
-            setNumberPage(res.arrPagenumber)
+            setNumberPage(res.arrPageNumber)
             setIndexPage(1)
         });
     }
@@ -36,7 +36,7 @@ export default function WareHouse() {
             productController.update(product)
             productController.list("", indexPage, 3).then(res => {
                 setData(res.dataPage)
-                setNumberPage(res.arrPagenumber)
+                setNumberPage(res.arrPageNumber)
                 setIndexPage(indexPage)
                 search(input)
             });
@@ -47,7 +47,7 @@ export default function WareHouse() {
             
              productController.list("", 1, 3).then(res => {
                 setData(res.dataPage)
-                setNumberPage(res.arrPagenumber)
+                setNumberPage(res.arrPageNumber)
                 setIndexPage(1)
             });
         }
@@ -64,12 +64,12 @@ export default function WareHouse() {
             productController.list("", id, 3).then(res => {
                 setData(res.dataPage)
                 setIndexPage(id)
-                setNumberPage(res.arrPagenumber)
+                setNumberPage(res.arrPageNumber)
             })
         } else {
             productController.list(input, id, 3).then(res => {
                 setData(res.dataPage)
-                setNumberPage(res.arrPagenumber)
+                setNumberPage(res.arrPageNumber)
                 setIndexPage(id)
             })
         }
@@ -91,14 +91,14 @@ export default function WareHouse() {
         if (input != "") {
             productController.list(input, 1, 3).then(res => {
                 setData(res.dataPage)
-                setNumberPage(res.arrPagenumber)
+                setNumberPage(res.arrPageNumber)
                 setInput(input)
                 setIndexPage(1)
             })
         } else {
             productController.list("", 1, 3).then(res => {
                 setData(res.dataPage)
-                setNumberPage(res.arrPagenumber)
+                setNumberPage(res.arrPageNumber)
                 setIndexPage(1)
                 setInput("")
             })

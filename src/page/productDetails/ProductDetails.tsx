@@ -47,7 +47,6 @@ export default function ProductDetails() {
         let orderProduct: orderProduct = { idProduct: String(data?.idProduct), price: Number(data?.price), quantity: Number(quantity) }
         cartController.addCart(orderProduct, "1")
 
-
     }
 
     const onPlus = () => {
