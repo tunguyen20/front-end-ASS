@@ -1,6 +1,6 @@
 import { count } from 'console';
 import React, { useState } from 'react'
-import {  Product } from '../../model/Product';
+import { Product } from '../../model/Product';
 
 interface Props {
     onAdd: (product: Product) => void,
@@ -42,7 +42,7 @@ export default function CartLeft(props: Props) {
         onBlur("name")
         onBlur("img")
     }
-    const checkForom = () => {
+    const checkForm = () => {
         onBlur("name")
         onBlur("img")
         if (checkName == true && checkImg == true) {
@@ -70,7 +70,7 @@ export default function CartLeft(props: Props) {
                 </label>
                 <input type="number" id="priceProduct" placeholder="Không bỏ trống" name='price' min="0" onChange={e => setNewCourse({ ...newProduct, price: Number(e.target.value) })} value={newProduct.price} onInput={onInputPrice} />
 
-                <button className='btnAddProduct' id='themSuaSp' onClick={checkForom} > {typeButton} Sản Phẩm</button>
+                <button className='btnAddProduct' id='themSuaSp' onClick={checkForm} > {typeButton} Sản Phẩm</button>
 
 
             </div>

@@ -1,10 +1,11 @@
 import axios from "axios"
+import { authAxios } from "."
 
 
 class OrderController {
 
     async HistoryOrders(idUser:string,pageSize:number,pageIndex:number) {
-        return axios.post(`http://localhost:3001/historyorders`, {idUser,pageSize,pageIndex}).then(res => {
+        return authAxios.post(`http://localhost:3001/historyorders`, {idUser,pageSize,pageIndex}).then(res => {
             return res.data
         })
     }

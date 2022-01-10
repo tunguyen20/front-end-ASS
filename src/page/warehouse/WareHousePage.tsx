@@ -59,6 +59,7 @@ export default function WareHouse() {
     const onEdit = (product: Product) => {
         setDataFrorm(product)
     }
+    
     let onNumberPage = (id: number) => {
         if (input == "") {
             productController.list("", id, 3).then(res => {

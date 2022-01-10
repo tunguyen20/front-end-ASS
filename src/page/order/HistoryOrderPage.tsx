@@ -38,7 +38,7 @@ export default function OrderPage() {
     return (
         <div>
             <div className="order">
-                <div className='empty'>{data.length == 0 ? <div><h1>Danh sách trống</h1><img className='imgEmpty' src="https://beemall.io/search.png" alt="" /> <a href="/home">Home</a> </div> : ""}</div>
+                <div className='empty'>{data.length === 0 ? <div><h1>Danh sách trống</h1><img className='imgEmpty' src="https://beemall.io/search.png" alt="" /> <a href="/home">Home</a> </div> : ""}</div>
                 {data.map((item, index) => (
 
                     <div key={index} className="orderProduct">
@@ -73,14 +73,14 @@ export default function OrderPage() {
 
             </div>
             <div style={{ textAlign: "center", padding: "20px" }} className="paginatinonProduct">
-                <button onClick={onPev} className={indexPage == 1 ? "activeBev" : ""} style={{ padding: "10px 20px", marginLeft: "10px", border: "0", borderRadius: "100px" }} >Pev</button>
+                <button onClick={onPev} className={indexPage === 1 ? "activeBev" : ""} style={{ padding: "10px 20px", marginLeft: "10px", border: "0", borderRadius: "100px" }} >Pev</button>
 
                 {numberPage.map((item, index) => (
-                    <button className={indexPage == index + 1 ? "indexPage" : ''} key={index} style={{ padding: "10px 20px", marginLeft: "10px", borderRadius: "100px", border: "0" }} onClick={() => { onNumberPage(index + 1) }}>{index + 1}</button>
+                    <button className={indexPage === index + 1 ? "indexPage" : ''} key={index} style={{ padding: "10px 20px", marginLeft: "10px", borderRadius: "100px", border: "0" }} onClick={() => { onNumberPage(index + 1) }}>{index + 1}</button>
                 ))}
 
 
-                <button onClick={onNext} className={indexPage == numberPage.length ? "activeNext" : ""} style={{ padding: "10px 20px", marginLeft: "10px", borderRadius: "100px", border: 0 }} >Next</button>
+                <button onClick={onNext} className={indexPage === numberPage.length ? "activeNext" : ""} style={{ padding: "10px 20px", marginLeft: "10px", borderRadius: "100px", border: 0 }} >Next</button>
             </div>
 
 

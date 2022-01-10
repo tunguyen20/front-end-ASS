@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState, createContext, useContext } from 'react';
 import { render } from "react-dom";
 import {
   BrowserRouter,
@@ -16,18 +16,35 @@ import ProductDetails from './page/productDetails/ProductDetails';
 import Cartpage from './page/cart/Cartpage';
 import "./App.css"
 import HistoryOrderPage from './page/order/HistoryOrderPage';
+import LoginPage from './page/login/LoginPage';
+import { userController } from './controller/UserController';
+
+import UserContextProvider, { userContext } from './context/UserContext';
+import CartContextProvider from './context/CartContext';
+
+
 function App() {
+  const {idUser,onSetIdUser}= useContext(userContext) 
+  
+ 
+ 
   return (
+
     <BrowserRouter>
-    <Header></Header>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/warehouse" element={<WareHousePage />} />
-        <Route path="/product/:id" element={<ProductDetails />} />
-        <Route path="/cart" element={<Cartpage />} />
-        <Route path="/order" element={<HistoryOrderPage />} />
-      </Routes>
+      <UserContextProvider>
+        <CartContextProvider>
+          <Header></Header>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/warehouse" element={<WareHousePage />} />
+            <Route path="/product/:id" element={<ProductDetails />} />
+            <Route path="/cart" element={<Cartpage />} />
+            <Route path="/order" element={<HistoryOrderPage />} />
+            <Route path="/login" element={<LoginPage />} />
+          </Routes>
+        </CartContextProvider>
+      </UserContextProvider>
       <Footer></Footer>
     </BrowserRouter>
 

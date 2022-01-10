@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { cartController } from '../../controller/CartController';
 import { orderController } from '../../controller/OrderController';
@@ -12,47 +12,57 @@ import { Cart } from '../../model/Cart';
 import "./CartPage.css"
 import CartPageProduct from './CartPageProduct';
 import { userInfo } from 'os';
+import { CartContext } from '../../context/CartContext';
+import { userContext } from '../../context/UserContext';
+import { userController } from '../../controller/UserController';
 export default function Cartpage() {
+
     let inforUser: User = {
         idUser: "1", firstName: "", lastName: "", address: "", email: "", phone: "", postcode: ""
     }
     const [cartProducts, setCartProducts] = useState<Cart[]>([]);
     const [infor, setInfo] = useState<User>(inforUser);
-    
-    const iduser = "1"
+    const { onSetQuantity } = useContext(CartContext)
+    const [idUser, setIdUser] = useState("")
+  
     let total = 0;
     for (let i = 0; i < cartProducts.length; i++) {
         total += cartProducts[i].price * cartProducts[i].quantity
     }
     useEffect(() => {
-        cartController.getCart(iduser).then(res => {
-            setCartProducts(res)
+        userController.getMe().then(res => {
+            cartController.getCart(res.idUser).then(res => {
+                setCartProducts(res)
+                onSetQuantity(Number(res.length))
+            });  
+            setIdUser(res.idUser) 
+        })
 
-        });
     }, [])
 
     const onPlus = (idOrderProduct: string) => {
         cartController.savePlusQuantityCart(idOrderProduct)
-        cartController.getCart(iduser).then(res => {
-
+        cartController.getCart(idUser).then(res => {
             setCartProducts(res)
-
         });
 
     }
     const onMinus = (idOrderProduct: string, quantity: number) => {
         if (quantity > 1) {
             cartController.saveMinusQuantityCart(idOrderProduct)
-            cartController.getCart(iduser).then(res => {
+            cartController.getCart(idUser).then(res => {
                 setCartProducts(res)
 
             });
         }
-
     }
     const onDelete = (idOrderProduct: string) => {
         cartController.deleteProductCart(idOrderProduct)
-        cartController.getCart(iduser).then(res => {
+        cartController.getCart(idUser).then(res => {
+            onSetQuantity(Number(res.length))
+
+        });
+        cartController.getCart(idUser).then(res => {
             setCartProducts(res)
 
         });
@@ -62,9 +72,9 @@ export default function Cartpage() {
 
     }
     const onOrder = () => {
-        cartController.getInforUser(iduser).then(res => {
+        cartController.getInforUser(idUser).then(res => {
             console.log(res);
-            
+
             setInfo(res[0])
         })
 

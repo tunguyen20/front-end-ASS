@@ -1,6 +1,7 @@
 import { count } from 'console'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { CartContext } from '../../context/CartContext'
 import { cartController } from '../../controller/CartController'
 import { productController } from '../../controller/ProductController'
 import { Cart, orderProduct } from '../../model/Cart'
@@ -8,6 +9,7 @@ import { Product } from '../../model/Product'
 import "./ProductDetail.css"
 
 export default function ProductDetails() {
+    const { onSetQuantity } = useContext(CartContext)
     const { id } = useParams()
     const [data, setData] = useState<Product>()
     const [quantity, setQuatity] = useState<number>(1)
@@ -15,38 +17,19 @@ export default function ProductDetails() {
         productController.detail(String(id)).then(res => {
             setData(res)
         })
+               
+      
     }, [id])
 
 
     const onAddCart = () => {
-        // let CartProducts: Cart[] = [];
-        // let JSONCart = localStorage.getItem("Carts")
-        // if (JSONCart != null) {
-        //     CartProducts = JSON.parse(JSONCart)
-        // }
-        // let check: boolean = true
-
-        // for (let i = 0; i < CartProducts.length; i++) {
-        //     if (CartProducts[i].idProduct == data?.idProduct) {
-        //         CartProducts[i].quantity = CartProducts[i].quantity + quantity
-        //         check = false
-        //     }
-        // }
-        // if (check == true) {
-        //     let product: Cart = {
-        //         idProduct: Number(data?.idProduct),
-        //         img: String(data?.img),
-        //         name: String(data?.name),
-        //         quantity: quantity,
-        //         price: Number(data?.price)
-        //     }
-        //     CartProducts.push(product)
-        // }
-
-        // localStorage.setItem("Carts", JSON.stringify(CartProducts))
         let orderProduct: orderProduct = { idProduct: String(data?.idProduct), price: Number(data?.price), quantity: Number(quantity) }
-        cartController.addCart(orderProduct, "1")
-
+        cartController.addCart(orderProduct, "1").then(res=>{
+             cartController.getCart("1").then(res => {
+            onSetQuantity(Number(res.length))
+        });
+        })
+       
     }
 
     const onPlus = () => {

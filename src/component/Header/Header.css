@@ -28,21 +28,52 @@ header{
      
 }
 .navBar .login{
+   
     margin-left: 30%;
-
     display: inline-block;
     color: white ;
 }
 .navBar .login .cartIcon,.listOrderIcon{
     text-transform: uppercase;
     color:#CCCCCC;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
         float: left;
         font-size: 17px;
        font-weight: bold;
        margin-left: 10px;
 }
-   
+.navBar .login span{
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+    background-color: red;
+    outline: 0px;
+    border: 0px;
+    cursor: pointer;
+    user-select: none;
+    vertical-align: middle;
+    appearance: none;
+    text-decoration: none;
+    line-height: 1.57143;
+    font-family: "Public Sans", sans-serif;
+    font-weight: 400;
+    border-radius: 16px;
+    text-align: center;
+    box-sizing: border-box;
+    min-width: 22px;
+    height: 22px;
+    padding: 0px 6px;
+    margin: 0px 3px;
+    color: white;
+    position: relative;
+    margin-left: -10px;
+    margin-top: -19px;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
    .navBar .login .cartIcon:hover{
        color: white;
    }
@@ -50,7 +81,7 @@ header{
 .navBar .logo {
     text-align: center;
     display: inline-block;
-   margin-left: 40%;
+   margin-left: 30%;
 }
 .navBar .logo img{
     margin-top: 7px;
@@ -62,6 +93,14 @@ header{
     margin: 30px 15% 10px 0px;
     float: right;
     
+}
+.inforUser{
+    display: inline-block;
+    color: white;
+    float: left;
+    margin-top: 30px;
+    padding-left: 80px;
+   
 }
 .menuCap1Nav .tieuDeCap1Nav  .fas{
     color:#CCCCCC;

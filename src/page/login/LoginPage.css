@@ -1,0 +1,33 @@
+*{
+    box-sizing: border-box;
+}
+.formLogin{
+   margin-top: 200px;
+   text-align: center;
+   min-height: 500px;
+  
+}
+.formLogin input{
+    margin: auto;
+    height: 30px;
+    padding: 10px;
+    width: 100%;
+    margin-top: 10px;
+}
+.formLogin h4{
+    margin-top: 20px;
+}
+.formLogin .btnLogin{
+    margin-top: 20px;
+    width: 100px;
+    color: white;
+    background-color: rgb(105, 105, 105);
+    border: none;
+    padding: 10px 20px;
+}
+.loginItem{
+    margin: auto;
+    background-color: white;
+    width: 40%;
+    padding: 20px;
+}

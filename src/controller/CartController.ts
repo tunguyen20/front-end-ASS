@@ -1,4 +1,5 @@
 import axios from "axios"
+import { authAxios } from "."
 import { Cart, orderProduct } from "../model/Cart"
 import { User } from "../model/User"
 
@@ -16,10 +17,10 @@ export const setDataLocalCart=(data:Cart[])=>{
 class CartController {
 
     async addCart(orderProduct:orderProduct,idUser:string) {
-        return axios.post(`http://localhost:3001/add-cart/${idUser}`, { orderProduct})
+        return authAxios.post(`http://localhost:3001/add-cart/${idUser}`, { orderProduct})
     }
     async getCart(idUser:string) {
-        return axios.get(`http://localhost:3001/cart/${idUser}`, {}).then(res => {
+        return authAxios.get(`http://localhost:3001/cart/${idUser}`).then(res => {
             return res.data
         })
     }
@@ -29,16 +30,16 @@ class CartController {
         })
     }
     async savePlusQuantityCart(idOrderProduct:string){
-        return axios.post(`http://localhost:3001/save-plus-quantity-product-cart`,{idOrderProduct})
+        return authAxios.post(`http://localhost:3001/save-plus-quantity-product-cart`,{idOrderProduct})
     }
     async saveMinusQuantityCart(idOrderProduct:string){
-        return axios.post(`http://localhost:3001/save-minus-quantity-product-cart`,{idOrderProduct})
+        return authAxios.post(`http://localhost:3001/save-minus-quantity-product-cart`,{idOrderProduct})
     }
     async deleteProductCart(idOrderProduct:string){
-        return axios.post(`http://localhost:3001/delete-product-cart`,{idOrderProduct})
+        return authAxios.post(`http://localhost:3001/delete-product-cart`,{idOrderProduct})
     }
     async saveCheckout(inforUser:User,idOrder:string){
-        return axios.post(`http://localhost:3001/checkout`,{inforUser,idOrder})
+        return authAxios.post(`http://localhost:3001/checkout`,{inforUser,idOrder})
     }
 }
 export const cartController = new CartController()
