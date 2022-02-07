@@ -4,225 +4,254 @@
     margin: 0;
 
 }
-
+img{
+    width: 100%;
+    height: 100%;
+}
+body{
+    font-family: sans-serif;
+    
+}
 ul{
     list-style: none;
 }
 a{
     text-decoration: none;
 }
+.headerWrapper{
+        padding: 0px 0px;
+      width: 100%;
+    background-color: rgb(147,135,217);
+}
+.headerWrapper .headerLogo{
+   padding: 10px ;
+   padding-left: 2%;
+}
 
-header{
-    position: fixed;
+.headerSearchForm{
+    background-color: rgb(241,241,241);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  display: flex;
+   margin: auto;
+  
+   padding: 5px 30px;  
+   border-radius: 30px;
+   width: 35%;
+   position: relative;
+}
+.headerSearchForm input{
+  width: 100%;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    height: 30px;
+}
+.headerSearchForm input:focus{
+   outline: none;
+    border: none;
+}
+.headerSearchForm .MuiInput-root {
+    margin-right: 20px;
+}
+.headerSearchForm .boxSearch{
     width: 100%;
-    top: 0;
-    display: block;
-}
-.navBar{
-    background-color: rgb(0, 0, 0);
-    width: 100%;
-    padding: 0px 20px;
-     margin: 0;
-     display: inline-block;
-     height: 80px;
-     
-}
-.navBar .login{
-   
-    margin-left: 30%;
-    display: inline-block;
-    color: white ;
-}
-.navBar .login .cartIcon,.listOrderIcon{
-    text-transform: uppercase;
-    color:#CCCCCC;
-        margin-bottom: 20px;
-        float: left;
-        font-size: 17px;
-       font-weight: bold;
-       margin-left: 10px;
-}
-.navBar .login span{
-    display: inline-flex;
-    -webkit-box-align: center;
     align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    position: relative;
-    -webkit-tap-highlight-color: transparent;
-    background-color: red;
-    outline: 0px;
-    border: 0px;
-    cursor: pointer;
-    user-select: none;
-    vertical-align: middle;
-    appearance: none;
-    text-decoration: none;
-    line-height: 1.57143;
-    font-family: "Public Sans", sans-serif;
-    font-weight: 400;
-    border-radius: 16px;
-    text-align: center;
-    box-sizing: border-box;
-    min-width: 22px;
-    height: 22px;
-    padding: 0px 6px;
-    margin: 0px 3px;
-    color: white;
-    position: relative;
-    margin-left: -10px;
-    margin-top: -19px;
-    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    display: flex;
 }
-   .navBar .login .cartIcon:hover{
-       color: white;
-   }
-
-.navBar .logo {
-    text-align: center;
-    display: inline-block;
-   margin-left: 30%;
-}
-.navBar .logo img{
-    margin-top: 7px;
-    width: 74%;
-}
-
-.menuCap1Nav{
-    position: relative;
-    margin: 30px 15% 10px 0px;
-    float: right;
-    
-}
-.inforUser{
-    display: inline-block;
-    color: white;
-    float: left;
-    margin-top: 30px;
-    padding-left: 80px;
-   
-}
-.menuCap1Nav .tieuDeCap1Nav  .fas{
-    color:#CCCCCC;
-    font-size: 16px;
-    margin: 0px 20px 0px 0px;
-    
-    
-}
-.menuCap1Nav .tieuDeCap1Nav a{
-    color: rgb(209, 209, 209);
-}
-.menuCap1Nav .tieuDeCap1Nav{
-    color:#CCCCCC;
-    font-size: 14px;
-    font-weight: bolder;
-    font-family: "Roboto", sans-serif;
-}
-.tieuDeCap1Nav{
-    display: inline-block;
-    
-}
-
-.menuCap2Nav{
-    display: none;  
-    position: fixed  ; 
-    z-index: 99;
-}
-.menuCap1Nav .menuCap2Nav .tieuDeCap2Nav{
-    padding: 10px 10px;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(87, 87, 87);
-    border-radius: 3px;
-    
-}
-
-
-
-.menuCap1Nav .tieuDeCap1Nav:hover .menuCap2Nav{
-   display:block;
-   
-}
-.menuCap1Nav .tieuDeCap1Nav:hover{
-    color: white;
-}
-.menuCap1Nav .tieuDeCap1Nav .fas:hover{
-    color: white;
-}
-
-.menuCap2 .tieuDeCap2Nav button:hover{
-    background-color: red;
-}
-
-.menuCap1Nav .menuCap2Nav .tieuDeCap2Nav p{
-    color: rgb(110, 110, 110);
-    padding: 10px 10px 40px 0px;
-    font-size: 15px;
-   
-   font-weight: normal;
-}
-.navBar .tieuDeCap1Nav .menuCap2Nav .tieuDeCap2Nav .fa-search{
-    color: white;
-    
-}
-
-.menu{
-    background-color:#DCDCDC;
-    margin: auto;
-    text-align: center;
-    height: 58px;
-    box-shadow: 0px 7px 16px 0px rgb(50 50 50 / 20%);
-}
-.menu .menuitem{
-    display: inline-block;
-   font-size: 14px;
- font-weight: bold;
-   margin-top: 5px;
-  line-height: 47px;
-  margin-left: 50px;
+.headerSearchForm .BoxItemSearch{
  position: relative;
-   
-}
-.menu .menuitem:hover{
-    border-bottom: 3px solid #c30005;
-    transition-duration: 0.1s;
+
+ margin-top: 6px;
 }
 
-.menu .menuitem a{
+
+.headerWrapper .container .row{
+    display: flex;
+    padding: 20px 0;
+    height: 100px;
+}
+.headerSearchForm svg{
+    color: rgb(0, 0, 0);
+   font-size: 20px;
+}
+.headerPageLink{
+    margin-right: 70px;
+    display: flex;
+    color: white;
+}
+.headerPageLink .loginHeader{
+    display: flex;
+    margin: auto;
+    padding-right: 20px;
+    border-right: 1px solid rgba(0, 0, 0, 0.274);
+}
+.headerPageLink .loginHeader .activeLogin{
+    padding: 10px;
+    border-radius: 30px;
+   
+    border: 2px solid rgba(255, 255, 255, 0.582);
+    margin-right: 10px;
+}
+.css-1869usk-MuiFormControl-root{
+    margin: 0 !important;
+}
+.headerPageLink .loginHeader .activeLogin svg{
+   display: flex;
+    font-size: 12px;
+    
+}
+.headerPageLink .loginHeader .activeLogin:hover{
+    background-color: black;
+    transition-duration: 0.5s;
+}
+.headerPageLink .iconsCart{
+    display: flex;
+    margin: auto;
+  margin-left: 20px;
+}
+.headerPageLink .iconsCart .activeCart{
+    display: flex;
+    padding: 7px;
+ border: 2px solid rgba(255, 255, 255, 0.637);
+ border-radius: 70px;
+
+}
+/* .headerPageLink .iconsCart .activeCart:hover{
+    background-color: black;
+    transition-duration: 0.5s;
+} */
+.headerPageLink .iconsCart svg{
+font-size: 17px;
+color: white;
+}
+.headerPageLink .textCart{
+    font-size: 12px;
+    font-weight: 800;
+}
+.headerPageLink .content-cart{
+    margin-left: 20px;
+
+}
+.headerPageLink  p{
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.headerBottom{
+    border-top: 1px solid rgba(0, 0, 0, 0.534);
+    background-color: rgb(147,135,217);
+    padding: 10px;
+    padding-left: 2%;
+}
+ .containerLoginRegister{
+     margin: auto;
+            text-align: center;
+            border: 1px solid black;
+            height: 430px;
+           
+            width: 430px;
+}
+.containerRegister{
+    text-align: center;
+}
+.containerLogin .titleLogin{
+    
+    font-size: 20px;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    position: relative;
+    margin-left: 35%;
+    margin-top: -50px;
+    width: 100px;
+    margin-bottom: 30px;
+}
+.containerLogin .titleLogin{
+    text-transform: uppercase;
+    font-size: 16px;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    position: relative;
+    margin-left: 37%;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: -47px;
+    width: 100px;
+    font-weight: 600;
+}
+.containerRegister .titleRegister{
+    text-transform: uppercase;
+    font-size: 16px;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    position: relative;
+    margin-left: 37%;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: -47px;
+    width: 100px;
+    font-weight: 600;
+}
+.btnLogin{
+    display: block;
+    padding: 20px;
+    width: 96%;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border: 0;
+    background-color: black;
+    color:white;
+}
+.btnCreactAcc{
+    display: block;
+    padding: 20px;
+    margin-top: 10px;
+    width: 96%;
+    margin: auto;
+    border: 0;
+    background-color: rgb(185,185,185);
+    color:white;
+}
+.btnRegister{
+    display: block;
+    padding: 20px;
+    width: 96%;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border: 0;
+    background-color: black;
+    color:white;
+}
+.btnBackLogin{
+     display: block;
+    padding: 20px;
+    margin-top: 10px;
+    width: 96%;
+    margin: auto;
+    border: 0;
+    background-color: rgb(185,185,185);
+    color:white;
+}
+.headerMenu{
+    display: flex;
+}
+.errLogin{
+    display: block !important;
+    background-color: rgb(255,231,217);
+    padding: 10px 15px;
+    color: rgb(180,46,51);
+    width: 97%;
+    margin: auto;
+}
+
+.headerBottom .container .row .headerMenu .itemMenu{
+    color: white;
+    margin-left: 20px;
+    padding:10px 20px;
+    font-size: 15px;
+}
+.headerBottom .container .row .headerMenu .itemMenu:hover{
     color: black;
 }
-.menu .menuitem .fa-angle-down{
-    color: #737373;
-}
-.menu .menuitem .menuNu{
-    display: none;
-    position: absolute;
-    margin-top: 3px;
-}
-.menu .menuitem:hover .menuNu{
-    display:block    ;
-    
-}
-.menu .menuitem .menuNu .tieuDeCap2{
-  line-height: 30px;
- padding: 15px 100px 5px 10px;
- font-size: 14px;
- text-align: left;
- border: 1px solid rgb(231, 231, 231);
- background-color: #d3d3d3;
-
-}
-
-.menu .menuitem .menuNu .tieuDeCap2 a{
-    color: rgb(133, 133, 133);
-   padding: 10px;
-   
-}
-.menu .menuitem .menuNu .tieuDeCap2:hover{
-    background-color: #f0f0f0;
-  
-   transition-duration: 0.3s ;
-}
-.menu .menuitem .menuNu .tieuDeCap2:hover a{
-    color: #f3282f;
-    transition-duration: 0.6s ;
+.headerBottom .container .row .headerMenu .itemMenu .MuiSvgIcon-fontSizeMedium{
+    position: absolute !important;
+    margin-top: -5px;
 }

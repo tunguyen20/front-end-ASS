@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Cart } from "../../model/Cart";
 
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import { RiDeleteBack2Line } from "react-icons/ri";
 interface Props {
-    product: Cart
+    itemCart: Cart
     onPlus: (id: string) => void
-    onMinus: ( id: string,quantity:number) => void
+    onMinus: (id: string, quantity: number) => void
     onDelete: (id: string) => void
 };
 
@@ -13,25 +15,38 @@ export default function CartPageProduct(props: Props) {
     return (
         <div className="content">
             <div className="img" >
-                <img src={props.product.img} alt="" />
+                <img src={props.itemCart.imageBookCover} alt="" />
+
             </div>
+
             <div className="name item">
-                <p>Sản phẩm</p>
-                {props.product.name}
+                <p>Name Book</p>
+                {props.itemCart.bookTitle}
             </div>
             <div className="price item">
-                <p>Đơn giá </p>
-                {props.product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                <p>Price </p>
+                {props.itemCart.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+
+            </div>
+            <div className="state item">
+                <p>Status </p>
+                {props.itemCart.state == true ? "New" : "Old"}
+
             </div>
             <div className="quantily item">
-                <p>Số lượng </p>
-                <button onClick={() => props.onMinus(String(props.product.idOrderProduct),props.product.quantity)} style={{ padding: "5px" }} >-</button>
-                <button style={{ display: "inline-block", width: "50px", height: "30px" }}>{props.product.quantity}</button>
-                <button onClick={() => props.onPlus(String(props.product.idOrderProduct))} style={{ padding: "5px" }} >+</button>
+                <p>Quantity </p>
+                <button onClick={() => props.onMinus(String(props.itemCart.idOrderBook), props.itemCart.quantity)} style={{ padding: "5px" }} >-</button>
+                <button style={{ display: "inline-block", width: "50px", height: "30px" }}>{props.itemCart.quantity}</button>
+                <button onClick={() => props.onPlus(String(props.itemCart.idOrderBook))} style={{ padding: "5px" }} >+</button>
+            </div>
+            <div className="total item">
+                <p>Total </p>
+                {(props.itemCart.price*props.itemCart.quantity).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+
             </div>
             <div className="delete item">
-                <p> Thao Tác</p>
-                <button onClick={() => props.onDelete(props.product.idOrderProduct)}><i className="fas fa-trash-alt"></i></button>
+                <p> Action</p>
+                <button onClick={() => props.onDelete(props.itemCart.idOrderBook)}><RiDeleteBack2Line/></button>
             </div>
         </div>
 

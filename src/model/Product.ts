@@ -23,29 +23,58 @@ export const setDataLocal = (product: Product[]) => {
 
 
 
-export const Phone: Product[] = [
-    {
-        idProduct: 1,
-        price: 1,
-        name: "B6",
-        img: "anh1"
+export interface Book {
+    price: number
+    idBookLine: string
+    state: boolean
+    quantity: number
+    idBook: string
 
-    },
-    {
-        idProduct: 2,
-        price: 2,
-        name: "B7",
-        img: "anh2"
+}
+export interface Media {
+    idBookLine: string
+    image: string
+    idImage: string
+}
+export interface BookLine {
+    idBookLine: string
+    bookTitle: string
+    bookAuthor: string
+    bookDescr: string
+    idPublisher: string
+    publicationDate: string
+    idBookCategory: string
+    createdAt: string
+    imageBookCover:string
+    buyCount: number
+    updatedAt:string
+    book: Book[]
+    media: Media[]
+}
 
-    },
-    {
-        idProduct: 3,
-        price: 3,
-        name: "B8",
-        img: "anh3"
-
-    }
-]
-
-
-
+export interface BookLineProps {
+    idBookLine: string
+    bookTitle: string
+    bookAuthor: string
+    bookDescr: string
+    namePublisher: string
+    idPublisher:string
+    publicationDate: string
+    nameCategory: string 
+    idCategory:string
+    createdAt: string
+    buyCount: number
+    imageBookCover:string
+    updatedAt:string
+    book: Book[]
+    media: Media[]
+  }
+  export interface Publisher {
+    idPublisher: string,
+    namePublisher: string
+  
+  }
+ export interface Category {
+    idCategory: string,
+    nameCategory: string
+  }

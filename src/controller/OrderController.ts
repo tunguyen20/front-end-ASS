@@ -4,9 +4,12 @@ import { authAxios } from "."
 
 class OrderController {
 
-    async HistoryOrders(idUser:string,pageSize:number,pageIndex:number) {
-        return authAxios.post(`http://localhost:3001/historyorders`, {idUser,pageSize,pageIndex}).then(res => {
-            return res.data
+    async HistoryOrders(idUser:string,pageSize:number,page:number) {
+        return authAxios.post(`http://localhost:3001/orders`, {idUser,pageSize,page}).then(res => {
+            if(res!=undefined){
+                 return res.data
+            }
+           
         })
     }
 }

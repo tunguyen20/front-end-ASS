@@ -13,13 +13,14 @@ export default function LoginPage() {
     const [password, setPassword] = useState("admin")
 
     const checkLogin = () => {
-        userController.CheckLogin(userName, password).then(res => {
-            if (res != "false") {
-                localStorage.setItem("jwt", res)
-                authAxios.defaults.headers.common['Authorization'] = res
-                navigate('/home')
-            }
-        })
+        
+        // userController.CheckLogin(userName, password).then(res => {
+        //     if (res != "false") {
+        //         localStorage.setItem("jwt", res)
+        //         authAxios.defaults.headers.common['Authorization'] = res
+        //         navigate('/home')
+        //     }
+        // })
     }
 
     return (

@@ -1,4 +1,4 @@
-import { Cart } from "./Cart";
+import { Cart, orderBook } from "./Cart";
 import { Product } from "./Product";
 import { User } from "./User";
 
@@ -10,21 +10,30 @@ import { User } from "./User";
 //     //    products:OderProduct[]
 
 // }
+
 export interface Order {
     idOrder: string
     idUser: string
-    orderStatus: boolean
+    orderStatus: string
     orderDate: string
+    firstName:string
+    lastName:string
+    phone:string
+    email:string
+    address:string
+    postcode:string
+    isTemporary:boolean
 }
-export interface OrderProduct {
-    id: string
-    idOrder: string
-    idProduct: string
-    quantity: number
+export interface orderBookProps {
+    idBook: string
     price: number
-    product: Product
+    quantity: number
+    idOrder: string
+    bookTitle:string
+    state:boolean,
+    imageBookCover:string
 }
 export interface OrderWithDetail extends Order {
-    orderProducts: OrderProduct[]
-    user: User
+    orderBooks: orderBookProps[]
+  
 }

@@ -1,0 +1,137 @@
+.sliderCategory .slick-slide img {
+    border-radius: 100px;
+    padding: 10px;
+}
+.slick-slide{
+    background-color: white;
+}
+.searchPage .imgCategory{
+  
+    padding: 30px;
+}
+.sliderCategory{
+    background-color: white;
+    color: black;
+    padding: 50px 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+.sliderCategory h1{
+    font-size: 47px;
+}
+.sliderCategory h4{
+        color: black;
+        font-size: 17px ;
+}
+
+.category .itemCategory{
+    font-weight: 600;
+    color: rgb(134, 132, 132);
+    line-height: 40px;
+    display: block;
+    border: 0;
+    font-size: 14px;
+    background: none;
+}
+.category .itemCategory:first-child{
+    margin-top: 20px;
+}
+.category{
+    border-top: 1px solid black;
+}
+.containerSearch{
+    width: 100%;
+    background-color: rgb(246,246,246);
+    display: inline-block;
+    padding: 50px 5%;
+}
+.filterBook{
+    float: left;
+    width: 23%;
+    padding-left: 30px;
+}
+.ListBookSearch{
+    width: 77%;
+    padding-left: 20px;
+    float: right;
+}
+.titleListBookSearch{
+    display: flex;
+    margin-top: -33px;
+    align-items: center;
+    font-size: 13px;
+    color: rgb(150,150,150);
+}
+.titleListBookSearch .shortSearch{
+    margin-left: 56%;
+   
+}
+
+ .ListBook{
+background-color: rgb(255, 255, 255);
+padding: 3% 2%;
+width: 98%;
+margin: auto;
+border-radius: 30px;
+}
+  .conTainerBooks .imgBook{
+width: 100%;
+min-height: 300px;
+}
+.Books  .conTainerBooks{
+    width: 100%;
+    
+}
+  .conTainerBooks .itemBook{
+    padding: 20px;
+   
+    width: 25%;
+  
+    display: inline-block;
+}
+  .conTainerBooks .itemBook .nameBook{
+    line-height: 30px;
+    color: black;
+}
+  .conTainerBooks .itemBook .authorBook span{
+    line-height: 30px;
+    font-size: 15px;
+    font-family: 'Times New Roman', Times, serif;
+    color: #9387d9;
+    font-style: italic;
+    font-weight: 500;
+}
+  .conTainerBooks .itemBook .authorBook {
+    line-height: 30px;
+    font-size: 15px;
+    font-family: 'Times New Roman', Times, serif;
+    color: #9387d9;
+    font-style: italic;
+    font-weight: 600;
+}
+
+  .conTainerBooks .itemBook .priceBook{
+    color: #969696;
+    font-weight: 700;
+    line-height: 30px;
+}
+  .conTainerBooks .itemBook .nameBook{
+    font-weight: 700;
+}
+.searchFor{
+    height: 30px;
+    margin-top: 20px;
+}
+
+.css-1diafny-MuiSlider-root{
+color: black !important; 
+}
+.indexCategory{
+    color: rgb(0, 0, 0) !important;
+}
+.itemCategory:hover{
+color: black;
+}
+
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root{
+    border-radius: 0px !important;
+}

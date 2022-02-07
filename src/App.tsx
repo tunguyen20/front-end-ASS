@@ -8,45 +8,81 @@ import {
 import './App.css';
 
 import WareHousePage from './page/warehouse/WareHousePage';
-import HomePage from './page/home/HomePage';
 
-import Header from './component/Header/Header';
-import Footer from './component/Footer/Footer';
-import ProductDetails from './page/productDetails/ProductDetails';
-import Cartpage from './page/cart/Cartpage';
 import "./App.css"
-import HistoryOrderPage from './page/order/HistoryOrderPage';
-import LoginPage from './page/login/LoginPage';
-import { userController } from './controller/UserController';
+import Header from './component/Header/Header';
+import Banner from './page/home/Banner';
+import HomePage from './page/home/HomePage';
+import ProductDetails from './page/productDetails/ProductDetails';
+import UserContextProvider from './context/UserContext';
+import CartContextProvider, { CartContext } from './context/CartContext';
+import CartPage from './page/cart/CartPage';
+import Footer from './component/Footer/Footer';
+import { Search } from '@mui/icons-material';
+import SearchPage from './page/searchPage/SearchPage';
+import FormLogin from './component/Header/FormLogin';
+import OrderPage from './page/order/HistoryOrderPage';
+import HomeLayout from './page/homeLayout/HomeLayout';
+import AdminLayout from './page/adminLayout/AdminLayout';
 
-import UserContextProvider, { userContext } from './context/UserContext';
-import CartContextProvider from './context/CartContext';
 
 
 function App() {
-  const {idUser,onSetIdUser}= useContext(userContext) 
-  
- 
- 
+
+
   return (
 
     <BrowserRouter>
       <UserContextProvider>
         <CartContextProvider>
-          <Header></Header>
+          {/* <Header /> */}
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/warehouse" element={<WareHousePage />} />
-            <Route path="/product/:id" element={<ProductDetails />} />
-            <Route path="/cart" element={<Cartpage />} />
-            <Route path="/order" element={<HistoryOrderPage />} />
-            <Route path="/login" element={<LoginPage />} />
+            <Route path="/" element={
+              <HomeLayout>
+                <HomePage />
+              </HomeLayout>
+            } />
+            <Route path="/home" element={
+              <HomeLayout>
+                <HomePage />
+              </HomeLayout>} />
+
+
+            <Route path="/warehouse" element={
+              <AdminLayout>
+                <WareHousePage />
+              </AdminLayout>
+            } />
+
+
+            <Route path="/book/:id" element={
+              <HomeLayout>
+                <ProductDetails />
+              </HomeLayout>
+            } />
+            <Route path="/cart" element={
+              <HomeLayout>
+                <CartPage />
+              </HomeLayout>} />
+
+            <Route path="/search" element={
+              <HomeLayout>
+                <SearchPage />
+              </HomeLayout>
+            } />
+
+            <Route path="/order" element={
+              <HomeLayout>
+                <OrderPage />
+              </HomeLayout>
+            } />
           </Routes>
+
         </CartContextProvider>
       </UserContextProvider>
-      <Footer></Footer>
-    </BrowserRouter>
+
+
+    </BrowserRouter >
 
   );
 }

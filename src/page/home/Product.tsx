@@ -1,31 +1,40 @@
+import { Rating } from '@mui/material'
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Product } from '../../model/Product'
-
+import { BookLineProps, Product } from '../../model/Product'
 
 interface Props {
-    product: Product
-};
+    ListBook: BookLineProps
+}
 
-let path="/product"
-export function ProductHome(prop: Props) {
-
+export function ProductHome(props: Props) {
+    let priceNew = -1
+    let priceOld = -1
+    props.ListBook.book.map((item, index) => {
+        item.state == true ? priceNew = item.price : priceOld = item.price
+    })
     return (
-        <div className="product" >
-            <Link to={"/product" + `/${prop.product.idProduct}`}>  
-            <div className="hinhAnh">
-              <img src={prop.product.img} alt="" />
-            </div>
-            <div className="thongTinSP">
-                <div className="ten">
-                    <p style={{color:"black"}}>{prop.product.name}</p>
-                </div>
+        <div className="itemBook">
 
-                <div className="gia">
-                    <p>{String(prop.product.price).replace(/\B(?=(\d{3})+(?!\d))/g, ",")} ₫</p>
+            <Link to={"/book" + `/${props.ListBook.idBookLine}`}>
+                <div className="imgBook" key={props.ListBook.media[0].idImage}>
+                    <img src={props.ListBook.imageBookCover} alt="" />
                 </div>
-            </div>
             </Link>
+            <div className="nameBook">
+                <p>{props.ListBook.bookTitle}</p>
+            </div>
+            <div className="authorBook">
+                <p>by: <span>{props.ListBook.bookAuthor}</span></p>
+            </div>
+            <div className="priceBook">
+                <p>${
+                    priceNew}{
+                        priceNew != -1 && priceOld != -1 ? " – " : ""
+                    }${
+                        priceOld}  </p>
+                         <Rating style={{ fontSize: "19px" }} name="half-rating" defaultValue={4.5} precision={0.5} />
+            </div>
         </div>
     )
 }

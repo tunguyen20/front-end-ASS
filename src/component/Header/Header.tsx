@@ -1,101 +1,82 @@
-import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
-import { CartContext } from '../../context/CartContext';
-import { userContext } from '../../context/UserContext';
-import { authAxios } from '../../controller';
-
-
+import React, { useContext, useState } from 'react'
+import { BiSearchAlt } from 'react-icons/bi';
+import { FaUserAlt } from 'react-icons/fa';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import TextField from '@mui/material/TextField';
+import Tab from '@mui/material/Tab';
+import TabContext from '@mui/lab/TabContext';
+import TabList from '@mui/lab/TabList';
+import TabPanel from '@mui/lab/TabPanel';
 import "./Header.css"
+import { useNavigate } from 'react-router-dom';
+import { userController } from '../../controller/UserController';
+import { authAxios } from '../../controller';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import FormLogin from './FormLogin';
+import PublisherMenu from './PublisherMenu';
+import CategoryMenu from './CategoryMenu';
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import SelectListCategory from './SelectListCategory';
+
 
 export default function Header() {
-    const { name,onSetName } = useContext(userContext);
-    const { onSetQuantity } = useContext(CartContext);
-    const {quantity}= useContext(CartContext)
-    const logout=()=>{
-        
-        localStorage.removeItem("jwt");
 
-        onSetName("")
-        onSetQuantity(0)
-        authAxios.defaults.headers.common['Authorization'] = ""
-    }
+    const [inputSearch, setInputSerch] = useState("")
+
     return (
         <div>
-            <header className="header">
-                <nav className="navBar">
-                    <div className="inforUser">
-                       
-                        <p ><b>{name}</b></p>
-                        <Link onClick={logout} to="/login"> {name!=""?<i className="fas fa-sign-out-alt"></i>:<i className="fas fa-sign-in-alt"></i>}</Link>
+            <div className="headerWrapper">
+                <div className="container">
+                    <div className="row">
+                        <div className="headerLogo">
+                            <Link to="/home"><img width="395" height="100" src="https://wpbingosite.com/wordpress/tikie/wp-content/webp-express/webp-images/uploads/2021/05/logo-white.png.webp" alt="Tikie – Book Store WooCommerce WordPress Theme" data-lazy-src="https://wpbingosite.com/wordpress/tikie/wp-content/webp-express/webp-images/uploads/2021/05/logo-white.png.webp" data-ll-status="loaded" className="entered lazyloaded" /></Link>
+                        </div>
+                        <div className="headerSearchForm">
+                            <div className="boxSearch">
+                                <SelectListCategory />
+                                <input onChange={e => setInputSerch(e.target.value)} type="text" placeholder='Search for books by keyword' />
+                            </div>
+                            <div className="BoxItemSearch">
+                                <Link to={`/search?search=${inputSearch}`} > <BiSearchAlt /></Link>
+                            </div>
+                        </div>
+                        <FormLogin />
                     </div>
-                    <div className="logo">
-                        <a><img src="http://mauweb.monamedia.net/converse/wp-content/uploads/2019/05/logo-mona.png" alt="" /></a>
-                    </div>
-                    <div className="login">
-                      
-                        <Link to={"/cart"} className="cartIcon"><i className="fas fa-shopping-cart">  <span>{quantity==-1?"":quantity}</span></i></Link>
-                       
-                        <Link to={"/order"} className="listOrderIcon"><i className="fas fa-list-ul"></i></Link>
-                    </div>
-                </nav>
-                <div className="menu">
-                    <ul className="menuitem">
-                        <Link to="/home">Trang chủ</Link>
-                    </ul>
-                    <ul className="menuitem">
-                        <a className="nu">NỮ</a>
-                        <ul className="menuNu">
-                            <li className="tieuDeCap2">
-                                <a className="tieuDeMucCap2">Classic</a>
-                            </li>
-                            <li className="tieuDeCap2">
-                                <a className="tieuDeMucCap2">Sunbanked</a>
-                            </li>
-                            <li className="tieuDeCap2">
-                                <a className="tieuDeMucCap2">Chuck 07s </a>
-                            </li>
-                            <li className="tieuDeCap2">
-                                <a className="tieuDeMucCap2">One Star </a>
-                            </li>
-                            <li className="tieuDeCap2">
-                                <a className="tieuDeMucCap2">PSY-Kicks </a>
-                            </li>
-                        </ul>
-                    </ul>
-                    <ul className="menuitem">
-                        <a className="nam">NAM</a>
-                        <ul className="menuNu">
-                            <li className="tieuDeCap2">
-                                <a className="tieuDeMucCap2">Classic</a>
-                            </li>
-                            <li className="tieuDeCap2">
-                                <a className="tieuDeMucCap2">Sunbanked</a>
-                            </li>
-                            <li className="tieuDeCap2">
-                                <a href="sanpham.html" className="tieuDeMucCap2">Chuck 07s </a>
-                            </li>
-                            <li className="tieuDeCap2">
-                                <a className="tieuDeMucCap2">One Star </a>
-                            </li>
-                            <li className="tieuDeCap2">
-                                <a className="tieuDeMucCap2">PSY-Kicks </a>
-                            </li>
-                        </ul>
-                    </ul>
-                    <ul className="menuitem">
-                        <a className="treEm">TRẺ EM </a>
-                    </ul>
-                    <ul className="menuitem">
-                        <a className="phuKienKhac">PHỤ KIỆN KHÁC</a>
-                    </ul>
-                    <ul className="menuitem">
-                        <a className="tienTuc">TIN TỨC</a>
-                    </ul>
-                    <ul className="menuitem">
-                        <a className="lienHe">LIÊN HỆ</a>
-                    </ul>
                 </div>
-            </header>
+            </div>
+            <div className="headerBottom">
+                <div className="container">
+                    <div className="row">
+                        <div className="headerMenu">
+                            <div className="itemMenu">
+                                HOME
+                                <KeyboardArrowDownIcon />
+                            </div>
+                            <div className="itemMenu">
+                                SHOP
+                                <KeyboardArrowDownIcon />
+                            </div>
+                            <div className="itemMenu">
+                                PRODUCT
+                                <KeyboardArrowDownIcon />
+                            </div>
+
+                            <div className="itemMenu">
+                                BLOG
+                                <KeyboardArrowDownIcon />
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

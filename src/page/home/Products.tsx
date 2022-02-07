@@ -1,91 +1,63 @@
 import { type } from 'os';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import Pagination from '@mui/material/Pagination';
 import { productController } from '../../controller/ProductController';
 
-import { getDataLocal, Product } from '../../model/Product'
+import { BookLineProps, getDataLocal, Product } from '../../model/Product'
 
 import { ProductHome } from './Product'
+import { Stack } from '@mui/material';
+import SliderBestSeller from './SliderBestSeller';
 
 
 export default function Products() {
-    const [data, setdata] = useState<Product[]>([]);
-    const [numberPage, setNumberPage] = useState<number[]>([]);
-    const [indexPage, setIndexPage] = useState<number>(1);
-    const [input, setInput] = useState<string>("");
+
+    const [dataListBooks, setDataListBooks] = useState<BookLineProps[]>([])
+    const [pageCount, setPageCount] = useState<number>(0)
     useEffect(() => {
-    
-        productController.list("", 1, 4).then(res => {
-            setdata(res.dataPage)
-            setNumberPage(res.arrPageNumber)
-        })
-
+        LoadList("", 1,5)
     }, [])
-    let onNumberPage = (id: number) => {
-        if (input == "") {
-            productController.list("", id, 4).then(res => {
-                setdata(res.dataPage)
-                setIndexPage(id)
-                setNumberPage(res.arrPageNumber)
-            })
-        } else {
-            productController.list(input, id, 3).then(res => {
-                setdata(res.dataPage)
-                setNumberPage(res.arrPageNumber)
-                setIndexPage(id)
-            })
-        }
-
+    const LoadList = (search: string, page: number, pageSize: number) => {
+        productController.list(search, page, pageSize).then(res => {
+            setPageCount(Math.ceil(res.pageCount/pageSize));
+            setDataListBooks(res.listBook)
+        })
     }
-    let onBev = () => {
-        if (indexPage > 1) {
-            onNumberPage(indexPage - 1)
-            setIndexPage(indexPage - 1)
-        }
-    }
-    let onNext = () => {
-        if (indexPage < numberPage.length) {
-            onNumberPage(indexPage + 1)
-            setIndexPage(indexPage + 1)
-        }
-    }
-    let search = (input: string) => {
-        if (input != "") {
-            productController.list(input, 1, 3).then(res => {
-                setdata(res.dataPage)
-                setNumberPage(res.arrPageNumber)
-                setInput(input)
-                setIndexPage(1)
-            })
-        } else {
-            productController.list("", 1, 4).then(res => {
-                setdata(res.dataPage)
-                setNumberPage(res.arrPageNumber)
-                setIndexPage(1)
-                setInput("")
-            })
-        }
-
-    }
-
+    const [page, setPage] = React.useState(1);
+    const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+        setPage(value);
+        console.log(value);
+        
+        LoadList("", value ,5)
+        
+    };
 
     return (
-        <div className="allProduct">
-            <input className='searchInput' type="text" onChange={e => search(e.target.value)} placeholder='Search.....' />
-            {data.map((item, index) => (<ProductHome key={index} product={item}  ></ProductHome>))}
+        <div className="Books">
+            <div className="ListBook">
+                <p className="title">
+                    New arrivals
+                </p>
+                <h2 className="titleList">
+                    NEW & UPCOMING RELEASES
+                </h2>
+
+                <div className="conTainerBooks">
+                    {/* {
+                        dataListBooks.map((item, index) => (
+                            <ProductHome ListBook={item} key={index} />
+                        ))
+                    } */}
+
+                <SliderBestSeller/>
+                </div>
+                {/* <Stack spacing={2} style={{ alignItems: "center"}}>
+                    <Pagination   variant="outlined" color="primary" count={pageCount} page={page} onChange={handleChange} />
+                </Stack> */}
 
 
-            <div style={{ textAlign: "center", padding: "20px" }} className="paginatinonProduct">
-                <button className={indexPage == 1 ? "activeBev" : ""} style={{ padding: "10px 20px", marginLeft: "10px", border: "0", borderRadius: "100px" }} onClick={onBev}>Pev</button>
-
-                {numberPage.map((item, index) => (
-                    <button className={indexPage == index + 1 ? "indexPage" : ''} key={index} style={{ padding: "10px 20px", marginLeft: "10px", borderRadius: "100px", border: "0" }} onClick={() => { onNumberPage(index + 1) }}>{index + 1}</button>
-                ))}
-
-
-                <button className={indexPage == numberPage.length ? "activeNext" : ""} style={{ padding: "10px 20px", marginLeft: "10px", borderRadius: "100px", border: 0 }} onClick={onNext}>Next</button>
             </div>
-
         </div>
     )
 }

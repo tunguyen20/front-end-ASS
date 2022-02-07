@@ -5,121 +5,253 @@
 }
 @import url(https://fonts.googleapis.com/css?family=Quicksand:500,regular,500,600,700);
 body{
-    background-color: rgb(245,245,245);
+    background-color: rgb(238,239,243);
    font-family:Quicksand ;
    font-weight: 600;
+
 }
 img {
     width: 100%;
+    height: 100%;
 }
-.allProduct{
+.containerBanner{
+    display: inline-block;
+    margin: auto;
+    width: 100%;
+    padding: 20px 40px;
+}
+.containerBanner .containerItemBig{
+    float: left;
+    width: 70%;
+}
+.containerBanner .containerItemBig .itemBotBig{
+        display: flex;
+}
+.containerBanner .containerSmall{
+float: right;
+width: 30%;
+}
+.containerBanner .containerSmall .smallTop{
+    padding: 20px;
+    padding-left: 0;
+}
+.containerBanner .containerSmall .smallBot{
+    padding: 20px;
+    padding-top: 0;
+    padding-left: 0;
+}
+.itemTopBig .titleTopBig {
+    position: absolute;
+    margin-top: -18%;
+    padding: 15px;
+    font-weight: 300;
+    color: white;
+    width: 527px;
+    margin-left: 30px;
+    line-height: 50px;
+}
+.itemTopBig{
+margin: 20px;
+margin-bottom: 0;
+}
+.itemBotBig .itemLeft{
+    margin: 20px;
+}
+.itemRight .titleItemRight{
+    position: absolute;
+    color: white;
+    margin-top: -230px;
+    margin-left: 70px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.itemRight .titleItemRight span{
+    display: block;
+    font-size: 70px;
+    font-weight: 800;
+}
+.itemRight .titleItemRight button{
+    display: block;
+   background: none;
+   color: white;
+   margin-top: 20px;
+   border: 1px solid white;
+   border-radius: 20px ;
+   padding: 7px 23px;
+}
+.itemRight .titleItemRight button:hover{
+    background-color: rgb(147,135,217);
+    transition: 1s;
+    border: 1px solid rgb(147,135,217);
+}
+.itemBotBig .itemRight{
+margin: 20px;
+}
+.containerSmall .titleMallTop{
+    position: absolute;
+    margin-top: -200px;
+    margin-left: 70px;
+    line-height: 34px;
+    color: white;
+    font-weight: 100;
+    font-size: 15px;
+}
+.containerSmall .titleMallTop span{
+    display: block;
+    font-weight: 800;
+    font-size: 30px;
+}
+.containerSmall .titleMallTop button{
+    display: block;
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 7px 28px;
+    color: white;
+}
+.containerSmall .titleMallTop button:hover{
+    background-color: rgb(147,135,217);
+    transition: 1s;
+    border: 1px solid rgb(147,135,217);
+}
+.containerSmall  .titleMallBot{
+   position: absolute;
+   margin-top: -180px;
+   margin-left: 60px;
+   color: white;
+   font-weight: 100;
+   line-height: 30px;
+}
+.containerSmall  .titleMallBot span{
+    display: block;
+    font-size: 30px ;
+    font-weight: 800;
+    color: white;
+}
+.containerSmall  .titleMallBot button{
+    border: 1px solid white;
+    background: none;
+    display: block;
+    color: white;
+    padding: 7px 24px;
+    border-radius: 20px;
+}
+.containerSmall  .titleMallBot button:hover{
+    background-color: rgb(147,135,217);
+    transition: 1s;
+    border: 1px solid rgb(147,135,217);
+
+}
+.percentUpTo{
+font-size: 90px;
+font-weight: 600;
+}
+.itemLeft .titleItemLeft{
+    position: absolute;
+    margin-top: -16%;
+   margin-left: 210px;
+   
+   color: white;
+   font-size: 20px;
+   font-weight: 100;
+  text-align: center;
+}
+.itemLeft .titleItemLeft button{
+    display: block;
+    background: none;
+    color: white;
+    border: 1px solid white;
+    border-radius: 20px ;
+    margin-top: 10px;
+    padding: 7px 23px;
+}
+.itemLeft .titleItemLeft  button:hover{
+    background-color: rgb(147,135,217);
+    transition: 1s;
+    border: 1px solid rgb(147,135,217);
+
+}
+.itemLeft .titleItemLeft span{
+    font-size: 70px;
+    letter-spacing: 5px;
+    font-weight: 600;
+    text-align: left;
+    display: block;
+   font-family: 'Times New Roman', Times, serif;
+}
+.brandList{
+    display: flex;
+    margin-top: 40px;
+}
+.brandList .itemBrand img{
+   padding:0 30px;
+ 
+}
+.Books {
+    width: 100%;
     margin-top: 100px;
 }
-.product {
-    background-color: white;
-    width: 20%;
-    display: inline-block;
-    text-align: center;
-    margin-left: 4%;
-    padding: 10px 0 0 0;
-    margin-top: 40px;
-    box-shadow: 0px 7px 16px 0px rgb(50 50 50 / 10%);
-    border: solid 1px rgb(197, 197, 197);
-    border-radius: 10px;
+.Books .ListBook{
+background-color: rgb(255, 255, 255);
+padding: 3% 2%;
+width: 98%;
+margin: auto;
+border-radius: 30px;
 }
-.searchInput{
-    margin-left: 35%;
-     margin-top : 10px,;
-     width: 30%;
-     border: 1px solid rgb(214, 214, 214);
-      height: 30px;
-      padding: 0 20px;
-}
-.searchInput:focus{
-    outline: none;
-    border: none;
-}
-.searchInput:focus{
-    border-radius: 3px;
-    outline: rgb(207, 207, 207);
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    
-}
-.dssp h1{
-    text-align: center;
-    font-size: 30px;
-    margin-bottom: 20px;
+.Books  .conTainerBooks .imgBook{
+width: 100%;
+min-height: 300px;
 }
 
-.dssp{
-    margin-top: 40px;
-}
-
-.thongTinSP {
-    background-color: white;
-   border-top: 1px solid rgb(180, 180, 180);
-    padding: 10px 10px;
-    border-radius: 0 0 10px 10px;
-}
-
-.btnAddCart{
-    background-color: rgb(156, 156, 156);
-    border: 0;
-    padding: 9px 15px;
-    color: white;
-    font-weight: bold;
-    font-size: 12px;
-    box-shadow: inset 0 1.4em 0 0 rgb(255 255 255 / 40%);
-    margin-bottom: 20px;
-}
-
-.thongTinSP button:hover {
-    background-color: rgb(34, 34, 34);
-    transition: 1s;
-    
-}
-
-.thongTinSP .gia {
-    font-weight: bold;
-    font-size: 20px;
-    margin: 15px 0;
-    color: rgb(202,157,127);
-}
-
-.product .hinhAnh{
+.Books  .conTainerBooks .itemBook{
     padding: 20px;
-    height: 230px;
+    margin-top: 20px;
+    width: 100%;
+  
+    display: inline-block;
+}
+.Books  .conTainerBooks .itemBook .nameBook{
+    line-height: 30px;
+}
+.Books  .conTainerBooks .itemBook .authorBook span{
+    line-height: 30px;
+    font-size: 15px;
+    font-family: 'Times New Roman', Times, serif;
+    color: #9387d9;
+    font-style: italic;
+    font-weight: 500;
+}
+.Books  .conTainerBooks .itemBook .authorBook {
+    line-height: 30px;
+    font-size: 15px;
+    font-family: 'Times New Roman', Times, serif;
+    color: #9387d9;
+    font-style: italic;
+    font-weight: 600;
 }
 
-.thongTinSP .hang{
-    font-weight: bold;
-    font-size: 19px;
-    margin-top: 5px;
-    
+.Books  .conTainerBooks .itemBook .priceBook{
+    color: #969696;
+    font-weight: 700;
+    line-height: 30px;
 }
-.activeNext{
-    background-color: rgb(97, 97, 97);
-    border: 1px solid rgb(139, 139, 139);
-    color: white;
+.Books  .conTainerBooks .itemBook .nameBook{
+    font-weight: 700;
 }
-.activeBev{
-    border: 1px solid rgb(36, 36, 36);
-    background-color: rgb(97, 97, 97);
-    color: white;
+.locationStore{
+    margin-top: 100px;
+  padding: 0 60px;
 }
-.indexPage {
-    background-color: red;
-    color: white;
-}
+.locationStore .titleLocation{
 
-
-.video{
-  padding-top: 50px;
-   margin: auto;
-    width: 90%;
+     float: left;
+     height: 699px;
+  
+     position: relative;
 }
-.Banner{
-    margin: auto;
-    margin-top: 180px;
-    width: 90%;
+.locationStore .mapLocation{
+    display: inline-block;
+    width: 93%;
+   
 }
